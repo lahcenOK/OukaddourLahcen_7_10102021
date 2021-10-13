@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "gropamania",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
