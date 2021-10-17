@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 const userRoutes = require("./routes/user");
-
+const profileRoutes = require("./routes/profile");
 const path = require("path");
 
 app.use((req, res, next) => {
@@ -21,5 +21,6 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.use("/api/auth", userRoutes);
+app.use("/api/auth", profileRoutes);
 
 module.exports = app;
