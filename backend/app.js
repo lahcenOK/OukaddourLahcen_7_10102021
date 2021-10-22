@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const dotenv = require("dotenv");
+dotenv.config();
 
 const userRoutes = require("./routes/user");
 const profileRoutes = require("./routes/profile");
@@ -19,6 +21,8 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
+
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.use("/api/auth", userRoutes);
 app.use("/api/auth", profileRoutes);
