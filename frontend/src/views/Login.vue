@@ -1,49 +1,48 @@
 <template>
-  <div class="about">
-    <h2>Page de connection</h2>
-  </div>
-  <main class="form-signin">
-    <form method="post" @submit.prevent="buttonLogin">
-      <img class="mb-4"
-        src="../assets/icon-logo.png"
-        alt="logo-gropomania"
-        width=""
-        height="60" />
-      <h2 class="h3 mb-3 fw-normal">Connectez-vous:</h2>
+ <main class="form-signin">
+  <form class="form-signin" method="post" @submit.prevent="buttonLogin">
+    <img
+      class="mb-4"
+      src="../assets/icon-logo.png"
+      alt="logo-gropomania"
+      width=""
+      height="60"
+    />
+    <h2 class="h3 mb-3 fw-normal">Connectez-vous:</h2>
 
-      <div class="form-floating">
-        <input
-          type="email"
-          class="form-control"
-          id="floatingInput"
-          placeholder="name@example.com"
-          v-model="email" />
-        <label for="floatingInput">Email address</label>
-      </div>
-      <div class="form-floating">
-        <input
-          type="password"
-          class="form-control"
-          id="floatingPassword"
-          placeholder="Password"
-          v-model="password"
-        />
-        <label for="floatingPassword">Password</label>
-      </div>
-
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me" /> Se souvenir de moi
-        </label>
-      </div>
-      <button class="w-100 btn btn-lg btn-primary" type="submit">
-        Sign in
-      </button>
-     
-    </form>
-    <div class="error" v-if="error">
-      {{ error.error }}
+    <div class="form-floating">
+      <input
+        type="email"
+        class="form-control"
+        id="floatingInput"
+        placeholder="name@example.com"
+        v-model="email"
+      />
+      <label for="floatingInput">Email address</label>
     </div>
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingPassword"
+        placeholder="Password"
+        v-model="password"
+      />
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me" /> Se souvenir de moi
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary active" type="submit">
+      Se connecter
+    </button>
+  </form>
+  <div class="error" v-if="error">
+    {{ error.error }}
+  </div>
   </main>
 </template>
 
@@ -87,7 +86,7 @@ export default {
 .form-signin {
   width: 100%;
   max-width: 330px;
-  padding: 15px;
+  padding: 1px;
   margin: auto;
 }
 

@@ -1,21 +1,48 @@
 <template>
   <div class="container">
-<img  class="mb-4"  src="../assets/icon-logo.png"
-        alt=""        width=""    height="60" />     
+    <img
+      class="mb-4"
+      src="../assets/icon-logo.png"
+      alt=""
+      width=""
+      height="60"
+    />
 
     <h1>Inscription</h1>
-    <form method="post" @submit.prevent="buttonSignup">      
-        <input type="email" v-model="email" class="form-control" placeholder="email@exemple.com">
-        <input type="text" v-model="name" class="form-control" placeholder="Nom">
-        <input type="text" v-model="firstname" class="form-control" placeholder="Prénom">
-        <input
-          type="password"
-          class="form-control"
-          id="password-input"
-          placeholder="Votre mot de passe"
-          v-model="password" />
-      
-      <button class="btn btn-warning" type="submit" @click.prevent="buttonSignup">S'inscrire</button>
+    <form method="post" @submit.prevent="buttonSignup">
+      <input
+        type="email"
+        v-model="email"
+        class="form-control"
+        placeholder="email@exemple.com"
+      />
+      <input
+        type="text"
+        v-model="name"
+        class="form-control"
+        placeholder="Nom"
+      />
+      <input
+        type="text"
+        v-model="firstname"
+        class="form-control"
+        placeholder="Prénom"
+      />
+      <input
+        type="password"
+        class="form-control"
+        id="password-input"
+        placeholder="Votre mot de passe"
+        v-model="password"
+      />
+
+      <button
+        class="w-50 btn-lg btn-primary active"
+        type="submit"
+        @click.prevent="buttonSignup"
+      >
+        S'inscrire
+      </button>
     </form>
     <div class="error" v-if="error">
       {{ error.error }}
@@ -62,21 +89,17 @@ export default {
 </script>
 
 <style scoped>
-.container{
- padding-top:10%;
-}
-
-input {  
-  margin:auto;
-  margin-bottom: 20px;
+input {
+  margin: auto;
+  margin-bottom: 5px;
   width: 50%;
 }
 
 .error {
-  font-size: 13px;
-  background-color: rgb(231, 185, 185);
-  color: rgb(53, 21, 21);
-  margin-top: 30px;
+  font-size: 17px;
+  background-color: rgb(255, 110, 110, 1);
+  color: white solid;
+  margin: 20px 280px 20px 280px;
   padding: 10px;
 }
 </style>

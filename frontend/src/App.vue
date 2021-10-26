@@ -9,7 +9,8 @@
         data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
-        aria-label="Toggle navigation" >
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -39,12 +40,19 @@
                   ><i class="fas fa-sign-in-alt"></i> Se Connecter</router-link
                 >
               </li>
+
               <li>
                 <router-link class="nav-link" to="/login" v-on:click="Logout()"
                   ><i class="fas fa-sign-out-alt"></i> Déconnexion</router-link
                 >
               </li>
             </ul>
+          </li>
+
+          <li class="nav-item">
+            <router-link class="nav-link " to="./post"
+              >Posts</router-link
+            >
           </li>
         </ul>
 
@@ -60,7 +68,7 @@
   <router-view />
   <footer class="footer mt-auto py-3 bg-light">
     <div class="container">
-       <span class="mt-5 mb-3 text-muted">Copyright 2021&copy;</span>
+      <span class="mt-5 mb-3 text-muted">Copyright 2021&copy;</span>
     </div>
   </footer>
 </template>
@@ -88,7 +96,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #18426d;
+  color: #3c668f;
 }
 .btn {
   margin-right: 10px;

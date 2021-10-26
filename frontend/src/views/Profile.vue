@@ -31,7 +31,7 @@
           v-model="firstname"
         />
       </div>
-      <button type="submit" @click.prevent="updateProfile">Modifier</button>
+      <button class="ibtn btn-light btn-lg" type="submit" @click.prevent="updateProfile">Modifier</button>
     </form>
     <div class="error" v-if="error">
       {{ error.error }}
@@ -40,24 +40,20 @@
       Supprimer mon compte
     </button>
     <h4>Tout mes Postes</h4>
-    <div class="postlist">
-      
-    </div>
-  </div>
+    
+     </div>
 </template>
-
 
 <script>
 import axios from "axios";
 
 export default {
-  name: "profile",
   data() {
     return {
       token: "",
       error: "",
       userId: "",
-      dataProfile: [],      
+      dataProfile: [],
       email: "",
       name: "",
       firstname: "",
@@ -78,7 +74,7 @@ export default {
           console.log({ error });
         });
     },
-   
+
     updateProfile() {
       let token = localStorage.getItem("token");
       let userId = localStorage.getItem("id");
@@ -115,7 +111,7 @@ export default {
     },
   },
   mounted() {
-    this.loadProfile();    
+    this.loadProfile();
   },
 };
 </script>
@@ -131,13 +127,13 @@ input {
   background-color: rgb(255, 80, 80);
   margin-top: 20px;
   margin-bottom: 50px;
+  height: 40px;
 }
-
 .error {
-  font-size: 13px;
-  background-color: rgb(231, 185, 185);
-  color: rgb(53, 21, 21);
-  margin-top: 30px;
+  font-size: 17px;
+  background-color: rgb(255, 110, 110, 1);
+  color: white solid;
+  margin: 20px 280px 20px 280px;
   padding: 10px;
 }
 </style>
