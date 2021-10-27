@@ -27,7 +27,7 @@
         <label for="File">(Facultatif)</label><br />
         <input type="file" ref="file" @change="selectFile()" />
       </div>
-      <button class="  btn btn-primary active" type="submit" @click.prevent="buttonNewMessage">Publier</button>
+      <button class="btn btn-primary active" type="submit" @click.prevent="buttonNewMessage">Publier</button>
       <div class="error" v-if="error">
         {{ error.error }}
       </div>
