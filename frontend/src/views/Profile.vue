@@ -31,23 +31,49 @@
           v-model="firstname"
         />
       </div>
-      <button class="ibtn btn-light btn-lg" type="submit" @click.prevent="updateProfile">Modifier</button>
-    </form>
+      <button class="btn btn-primary btn-lg" type="submit" @click.prevent="updateProfile">Modifier</button>
+    
     <div class="error" v-if="error">
       {{ error.error }}
     </div>
-    <button class="deletebtn" type="submit" @click.prevent="deleteProfile">
+    <button class="deletebtn btn-danger" type="submit" @click.prevent="deleteProfile">
       Supprimer mon compte
-    </button>
+    </button></form>
     <h4>Tout mes Postes</h4>
+    <div>
+      <newPost/>
+    </div>
+         <div class="my-posts">
+      <div
+        class="m-post"
+        v-for="mPost in postsProfile"
+        :key="mPost.id"
+      >
+        <h3>{{ mPost.title }}</h3>
+        <img
+          :src="mPost.image"
+          :alt="mPost.image"
+          v-if="mPost.image != null"
+        /><br />
+        <p>{{ mPost.content }}</p>
+        <deletePost :id="mPost.id" />
+      </div>
+    </div>
     
      </div>
 </template>
 
 <script>
 import axios from "axios";
-
+import deletePost from "../components/deletePost";
 export default {
+  name:"profile",
+  components: {
+    deletePost,
+  },
+  props: {
+    id: Number,
+  },
   data() {
     return {
       token: "",
@@ -74,7 +100,20 @@ export default {
           console.log({ error });
         });
     },
-
+loadPostsProfile() {
+      let token = localStorage.getItem("token");
+      let userId = localStorage.getItem("id");
+      axios
+        .get("http://localhost:3000/api/auth/profile/" + userId + "/posts", {
+          headers: { Authorization: "Bearer " + token },
+        })
+        .then((res) => {
+          this.postsProfile = res.data;
+        })
+        .catch((error) => {
+          console.log({ error });
+        });
+    },
     updateProfile() {
       let token = localStorage.getItem("token");
       let userId = localStorage.getItem("id");
@@ -112,22 +151,23 @@ export default {
   },
   mounted() {
     this.loadProfile();
+    this.loadPostsProfile();
   },
 };
 </script>
 
 <style scoped>
 form {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 input {
   margin-bottom: 10px;
 }
 .deletebtn {
   background-color: rgb(255, 80, 80);
-  margin-top: 20px;
-  margin-bottom: 50px;
-  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  height: 45px;
 }
 .error {
   font-size: 17px;

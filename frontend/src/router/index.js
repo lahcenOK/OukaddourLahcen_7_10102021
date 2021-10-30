@@ -7,34 +7,30 @@ const routes = [
     name: 'Home',
     component: () => import('../views/Home.vue') 
   },
-  {
-    path: '/post',
-    name: 'Posts',
-    component: () => import('../components/onePost.vue') 
-  },
+ 
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import( /* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import( '../views/About.vue')
   },
+ 
   {
     path: '/inscription',
     name: 'Inscription',
     component: () => import( '../views/Inscription.vue')
   },
+ 
   {
     path: '/login',
     name: 'Login',
     component: () => import( '../views/Login.vue')
   },
+ 
   {
     path: "/profile",
     name: "profile",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Profile.vue"),
+      import( "../views/Profile.vue"),
     beforeEnter: (to, from, next) => {
       let token = localStorage.getItem("token");
       if (token) {
@@ -43,7 +39,23 @@ const routes = [
         next({ name: "Login" });
       }
     },
-  }
+  },
+ 
+  {
+    path: "/onePost/:id",
+    name: "onePost",
+    component: () =>
+      import( "../components/onePost.vue"),
+    beforeEnter: (to, from, next) => {
+      let token = localStorage.getItem("token");
+      if (token) {
+        next();
+      } else {
+        next({ name: "login" });
+      }
+    },
+  },
+  
 ]
 
 const router = createRouter({
