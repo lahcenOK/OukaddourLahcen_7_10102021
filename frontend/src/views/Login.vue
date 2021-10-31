@@ -72,7 +72,7 @@ export default {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("id", res.data.userId);
           }
-          this.$router.push("/");
+          this.$router.push("/navigate");
         })
         .catch((error) => {
           this.error = error.response.data;

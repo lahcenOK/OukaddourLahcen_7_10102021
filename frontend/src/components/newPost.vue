@@ -66,6 +66,10 @@ export default {
         })
         .then(() => {
           alert("Votre message a bien été publié !");
+
+          document.location.reload();
+          this.$router.push("/navigate");
+
         })
         .catch((error) => {
           this.error = error.response.data;
@@ -77,6 +81,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 

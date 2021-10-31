@@ -3,7 +3,7 @@
     <nav id="nav">
       <ul class="links">
         <li>
-          <router-link to="/">Retour</router-link>
+          <router-link to="/feed">Retour</router-link>
         </li>
       </ul>
     </nav>
@@ -78,3 +78,41 @@ export default {
   },
 };
 </script>
+<style scoped>
+#oneMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+#comment-card {
+  background-color: #c46e78;
+  color: white;
+  font-size: 15px;
+  width: 80%;
+  border: solid 2px;
+  margin-bottom: 15px;
+  padding: 15px;
+  text-align: left;
+}
+.user-name {
+  font-size: 11px;
+}
+.date {
+  font-size: 12px;
+}
+.comment {
+  font-size: 20px;
+}
+.createdAt {
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 15px;
+}
+.commentaire {
+  margin: 15px;
+}
+</style>

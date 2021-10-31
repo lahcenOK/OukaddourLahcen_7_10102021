@@ -52,7 +52,7 @@ export default {
     };
   },
   methods: {
-    loadPosts() {
+    loadNavigate() {
       let token = localStorage.getItem("token");
       let decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
       axios
@@ -68,6 +68,53 @@ export default {
         });
     },
   },
-  
+   mounted() {
+    this.loadNavigate();
+  },
 };
 </script>
+<style scoped>
+.feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#message-card {
+  color: white;
+  width: 80%;
+  max-width: 500px;
+  border: solid 2px;
+  margin: 15px;
+}
+a {
+  text-decoration: none;
+  color: red;
+}
+.content {
+  font-size: 18px;
+  padding-bottom: 15px;
+}
+img {
+  max-width: 500px;
+  width: 90%;
+  height: 90%;
+}
+.createdAt {
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 15px;
+}
+.one-message {
+  background-color: #c46e78;
+  color: white;
+  padding: 9px;
+  border-radius: 25px;
+  font-size: 14px;
+}
+.adminDelete {
+  margin: 30px;
+}
+</style>

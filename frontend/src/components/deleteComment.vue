@@ -43,3 +43,12 @@ export default {
   },
 };
 </script>
+<style scoped>
+button {
+  background-color: rgb(200, 193, 193);
+  color: white;
+  border: none;
+  padding: 5px;
+  margin-top: 10px;
+}
+</style>

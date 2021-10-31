@@ -7,25 +7,35 @@ const routes = [
     name: 'Home',
     component: () => import('../views/Home.vue') 
   },
- 
+  {
+    path: "/navigate",
+    name: "navigate",
+    component: () =>
+      import("../components/navigate.vue"),
+    beforeEnter: (to, from, next) => {
+      let token = localStorage.getItem("token");
+      if (token) {
+        next();
+      } else {
+        next({ name: "login" });
+      }
+    },
+  },
   {
     path: '/about',
     name: 'About',
     component: () => import( '../views/About.vue')
   },
- 
   {
     path: '/inscription',
     name: 'Inscription',
     component: () => import( '../views/Inscription.vue')
   },
- 
   {
     path: '/login',
     name: 'Login',
     component: () => import( '../views/Login.vue')
   },
- 
   {
     path: "/profile",
     name: "profile",
@@ -40,7 +50,6 @@ const routes = [
       }
     },
   },
- 
   {
     path: "/onePost/:id",
     name: "onePost",
@@ -56,6 +65,7 @@ const routes = [
     },
   },
   
+
 ]
 
 const router = createRouter({

@@ -55,7 +55,7 @@
 import axios from "axios";
 
 export default {
-  name: "register",
+  name: "inscription",
   data() {
     return {
       email: "",
