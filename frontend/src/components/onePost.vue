@@ -3,7 +3,7 @@
     <nav id="nav">
       <ul class="links">
         <li>
-          <router-link to="/feed">Retour</router-link>
+          <router-link to="/navigate">Retour</router-link>
         </li>
       </ul>
     </nav>
@@ -79,7 +79,7 @@ export default {
 };
 </script>
 <style scoped>
-#oneMessage {
+#onePost {
   display: flex;
   flex-direction: column;
   align-items: center;

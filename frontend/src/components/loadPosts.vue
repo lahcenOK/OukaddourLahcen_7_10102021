@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="poster" >
     <div id="post-card" v-for="post in allPosts" :key="post.id">
       <h1 class="title">{{ post.title }}</h1>
       <div class="content">
@@ -74,30 +74,32 @@ export default {
 };
 </script>
 <style scoped>
-.feed {
+.poster {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 60px;
 }
-#message-card {
-  color: white;
+#post-card {
   width: 80%;
   max-width: 500px;
-  border: solid 2px;
-  margin: 15px;
+  border: solid 1px;
+  margin: 10px;
 }
+
 a {
   text-decoration: none;
-  color: red;
+  color: rgb(19, 3, 49);
 }
 .content {
   font-size: 18px;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
+
 }
 img {
   max-width: 500px;
-  width: 90%;
-  height: 90%;
+  width: 80%;
+  height: 70%;
 }
 .createdAt {
   font-size: 12px;
@@ -107,14 +109,14 @@ img {
   padding-right: 30px;
   margin-bottom: 15px;
 }
-.one-message {
-  background-color: #c46e78;
+.one-post {
+  background-color: rgb(255, 110, 110);
   color: white;
   padding: 9px;
   border-radius: 25px;
   font-size: 14px;
 }
 .adminDelete {
-  margin: 30px;
+  margin: 10px;
 }
 </style>

@@ -24,10 +24,10 @@
         />
       </div>
       <div>
-        <label for="File">(Facultatif)</label><br />
+        <label for="File">(Optionnel)</label><br />
         <input type="file" ref="file" @change="selectFile()" />
       </div>
-      <button class="btn btn-primary active" type="submit" @click.prevent="buttonNewMessage">Publier</button>
+      <button class="btn btn-primary active" type="submit" @click.prevent="buttonNewPost">Publier</button>
       <div class="error" v-if="error">
         {{ error.error }}
       </div>
@@ -86,7 +86,7 @@ export default {
 <style scoped>
 
 textarea {
-  width: 50%;
+  width: 70%;
   margin-bottom: 1px;
 }
 label {
@@ -96,11 +96,11 @@ input {
   border: solid rgb(172, 164, 164) 1px;
   text-decoration: none;
   margin-bottom: 5px;
-  width: 50%;
+  width: 70%;
 }
 button {
   border-radius: 0.3rem;
-  width: 50%;
+  width: 70%;
   height: 30%;
   font-weight: 600;
   margin-top: 1px;

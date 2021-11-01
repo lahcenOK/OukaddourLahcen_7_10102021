@@ -76,6 +76,7 @@ button {
   border: none;
   
 }
+
 .error {
   font-size: 17px;
   background-color: rgb(255, 110, 110, 1);
