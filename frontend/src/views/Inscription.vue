@@ -7,8 +7,10 @@
       width=""
       height="60"
     />
-
-    <h1>Inscription</h1>
+    <div class="hlink">
+      <router-link to="/">Home</router-link>
+    </div>
+    <h1>Inscription :</h1>
     <form method="post" @submit.prevent="buttonSignup">
       <input
         type="email"
@@ -94,7 +96,10 @@ input {
   margin-bottom: 5px;
   width: 50%;
 }
-
+.hlink {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
 .error {
   font-size: 17px;
   background-color: rgb(255, 110, 110, 1);

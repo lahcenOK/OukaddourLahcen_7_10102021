@@ -7,7 +7,7 @@
             <router-link class="nav-link active" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link active" to="/profile"> Profil</router-link>
+            <router-link class="nav-link active" to="/profile"> Profile</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link active" to="/login" v-on:click="Logout()">

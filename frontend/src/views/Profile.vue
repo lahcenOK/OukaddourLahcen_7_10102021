@@ -8,7 +8,7 @@
       </ul>
     </nav>
     <div>
-    <h2>Profile</h2>
+      <h2>Profile</h2>
       <p>
         <u>E-mail</u>:
         {{ dataProfile.email }}
@@ -31,24 +31,28 @@
           v-model="firstname"
         />
       </div>
-      <button class="btn btn-primary btn-lg" type="submit" @click.prevent="updateProfile">Modifier</button>
-    
-    <div class="error" v-if="error">
-      {{ error.error }}
-    </div>
-    <button class="deletebtn btn-danger" type="submit" @click.prevent="deleteProfile">
-      Supprimer mon compte
-    </button></form>
-    <h4>Tout mes Postes</h4>
-    <div>
-      <newPost/>
-    </div>
-         <div class="my-posts">
-      <div
-        class="m-post"
-        v-for="mPost in postsProfile"
-        :key="mPost.id"
+      <button
+        class="btn btn-primary btn-lg"
+        type="submit"
+        @click.prevent="updateProfile"
       >
+        Modifier
+      </button>
+
+      <div class="error" v-if="error">
+        {{ error.error }}
+      </div>
+      <button
+        class="deletebtn btn-danger"
+        type="submit"
+        @click.prevent="deleteProfile"
+      >
+        Supprimer mon compte
+      </button>
+    </form>
+    <h4>Tout mes Postes</h4>
+    <div class="mes-posts">
+      <div class="m-post" v-for="mPost in postsProfile" :key="mPost.id">
         <h3>{{ mPost.title }}</h3>
         <img
           :src="mPost.image"
@@ -59,15 +63,14 @@
         <deletePost :id="mPost.id" />
       </div>
     </div>
-    
-     </div>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
 import deletePost from "../components/deletePost";
 export default {
-  name:"profile",
+  name: "profile",
   components: {
     deletePost,
   },
@@ -100,7 +103,7 @@ export default {
           console.log({ error });
         });
     },
-loadPostsProfile() {
+    loadPostsProfile() {
       let token = localStorage.getItem("token");
       let userId = localStorage.getItem("id");
       axios
@@ -164,7 +167,7 @@ input {
   margin-bottom: 10px;
 }
 .deletebtn {
-  background-color: rgb(255, 80, 80);
+  background-color: rgb(255, 110, 110);
   margin-top: 10px;
   margin-bottom: 40px;
   height: 45px;
@@ -174,6 +177,16 @@ input {
   background-color: rgb(255, 110, 110, 1);
   color: white solid;
   margin: 20px 280px 20px 280px;
+  padding: 10px;
+}
+img {
+  width: 70px;
+  height: 70px;
+}
+.m-Post {
+  width: 20%;
+  font-size: 12px;
+  margin: 15px;
   padding: 10px;
 }
 </style>

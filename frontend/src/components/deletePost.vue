@@ -39,7 +39,7 @@ export default {
 
 <style scoped>
 button {
-  background-color: rgb(212, 33, 33);
+  background-color: rgb(255,110,110);
   color: white;
 }
 </style>

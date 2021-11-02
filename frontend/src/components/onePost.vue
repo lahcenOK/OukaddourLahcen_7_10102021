@@ -86,11 +86,9 @@ export default {
   margin-top: 30px;
 }
 #comment-card {
-  background-color: #c46e78;
-  color: white;
   font-size: 15px;
   width: 80%;
-  border: solid 2px;
+  border: solid 1px;
   margin-bottom: 15px;
   padding: 15px;
   text-align: left;

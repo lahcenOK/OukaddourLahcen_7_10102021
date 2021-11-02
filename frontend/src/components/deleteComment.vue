@@ -45,7 +45,7 @@ export default {
 </script>
 <style scoped>
 button {
-  background-color: rgb(200, 193, 193);
+  background-color: rgb(255, 110, 110, 1);
   color: white;
   border: none;
   padding: 5px;

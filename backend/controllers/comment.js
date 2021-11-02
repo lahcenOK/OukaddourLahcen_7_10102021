@@ -14,7 +14,7 @@ exports.createComment = (req, res, next) => {
 
   models.Comment.create({
     idUsers: userId,
-    idMessages: req.params.id,
+    idPosts: req.params.id,
     comment: req.body.comment,
   })
     .then(() => res.status(200).json({ message: "Commentaire enregistré !" }))
@@ -26,13 +26,13 @@ exports.getAllComments = (req, res, next) => {
     attributes: [
       "id",
       "idUsers",
-      "idMessages",
+      "idPosts",
       "comment",
       "createdAt",
       "updatedAt",
     ],
     where: {
-      idMessages: req.params.id,
+      idPosts: req.params.id,
     },
     order: [["updatedAt", "DESC"]],
     include: [
@@ -60,7 +60,7 @@ exports.deleteComment = (req, res, next) => {
 
   models.Comment.findOne({
     where: {
-      idMessages: req.params.idMessages,
+      idPosts: req.params.idPosts,
       id: req.params.id,
     },
   }).then((comment) => {
