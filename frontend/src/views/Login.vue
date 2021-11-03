@@ -8,7 +8,10 @@
       width=""
       height="60"
     />
-    <h2 class="h3 mb-3 fw-normal">Connectez-vous:</h2>
+    <div class="hlink">
+      <router-link to="/">Home</router-link>
+    </div>
+    <h2 class="h3 mb-3 fw-normal">Identifiez-vous:</h2>
 
     <div class="form-floating">
       <input
@@ -83,6 +86,11 @@ export default {
 </script>
 
 <style scoped>
+.hlink {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
 .form-signin {
   width: 100%;
   max-width: 330px;

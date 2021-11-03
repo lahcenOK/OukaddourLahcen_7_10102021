@@ -1,6 +1,7 @@
 const models = require("../models/");
 const jwt = require("jsonwebtoken");
 
+//Editer un profil
 exports.getOneProfile = (req, res, next) => {
   models.User.findOne({
     attributes: ["id", "email", "name", "firstname"],
@@ -16,7 +17,7 @@ exports.getOneProfile = (req, res, next) => {
       });
     });
 };
-
+// Modifier le profil
 exports.modifyProfile = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
   const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
@@ -48,6 +49,7 @@ exports.modifyProfile = (req, res, next) => {
   });
 };
 
+// Supprimer un profil
 exports.deleteProfile = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
   const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
@@ -76,6 +78,34 @@ exports.deleteProfile = (req, res, next) => {
     .catch((error) => {
       res.status(400).json({
         error: "L'utilisateur n'a pas pu être supprimé !",
+      });
+    });
+};
+//Afficher les postes d'un profil
+exports.getAllPostsProfile = (req, res, next) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const userId = decodedToken.userId;
+
+  models.Post.findAll({
+    order: [["updatedAt", "DESC"]],
+    attributes: [
+      "id",
+      "idUsers",
+      "title",
+      "content",
+      "image",
+      "createdAt",
+      "updatedAt",
+    ],
+    where: { idUsers: userId },
+  })
+    .then((posts) => {
+      res.status(200).json(posts);
+    })
+    .catch((error) => {
+      res.status(400).json({
+        error: error,
       });
     });
 };

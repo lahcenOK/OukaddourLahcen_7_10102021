@@ -4,7 +4,7 @@
 
 ### Outils utilisés:
 - HTML
-- CSS / SCSS
+- CSS
 - JS
 - API REST
 - VUEJS

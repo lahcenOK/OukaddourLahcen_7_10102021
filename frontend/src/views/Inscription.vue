@@ -99,11 +99,12 @@ input {
 .hlink {
   margin-top: 0px;
   margin-bottom: 10px;
+   font-size: 20px;
 }
 .error {
   font-size: 17px;
   background-color: rgb(255, 110, 110, 1);
-  color: white solid;
+
   margin: 20px 280px 20px 280px;
   padding: 10px;
 }

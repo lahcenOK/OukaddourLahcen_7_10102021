@@ -2,6 +2,7 @@ const models = require("../models");
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
 
+//Création d'un post
 exports.createPost = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
   const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
@@ -24,6 +25,7 @@ exports.createPost = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }));
 };
 
+// Afficher tous les posts
 exports.getAllPost = (req, res, next) => {
   models.Post.findAll({
     order: [["updatedAt", "DESC"]],
@@ -53,6 +55,7 @@ exports.getAllPost = (req, res, next) => {
     });
 };
 
+// Afficher un seul post
 exports.getOnePost = (req, res, next) => {
   models.Post.findOne({
     attributes: [
@@ -76,6 +79,7 @@ exports.getOnePost = (req, res, next) => {
     });
 };
 
+// Supprimer un post
 exports.deletePost = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
   const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");

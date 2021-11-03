@@ -83,6 +83,7 @@ export default {
       error: "",
       userId: "",
       dataProfile: [],
+      postsProfile: [],
       email: "",
       name: "",
       firstname: "",
@@ -145,7 +146,7 @@ export default {
         })
         .then(() => {
           alert("Votre compte est supprimé !");
-          this.$router.push("/");
+          this.$router.push("/"); 
         })
         .catch((error) => {
           console.log({ error });
