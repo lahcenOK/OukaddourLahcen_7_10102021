@@ -1,17 +1,24 @@
 <template>
- <main class="form-signin">
+ <div class="">
+<nav id="nav" class="navbar navbar-expand-lg"> 
+      <img
+        class="ms-3"
+        src="../assets/icon-white.png"
+        alt="logo-groupomania"
+        width="175"
+        height="30"
+      />
+      <div class="container-fluid">
+        <ul class="navbar-nav  ms-5 text-light">
+          <li>
+          <router-link class="nav-link text-light active" to="/">Home</router-link>
+        </li>
+        </ul>
+      </div>
+    </nav>
   <form class="form-signin" method="post" @submit.prevent="buttonLogin">
-    <img
-      class="mb-4"
-      src="../assets/icon-logo.png"
-      alt="logo-gropomania"
-      width=""
-      height="60"
-    />
-    <div class="hlink">
-      <router-link to="/">Home</router-link>
-    </div>
-    <h2 class="h3 mb-3 fw-normal">Identifiez-vous:</h2>
+       
+    <h4 class="fw-bolder mt-5">Identifiez-vous:</h4>
 
     <div class="form-floating">
       <input
@@ -39,14 +46,14 @@
         <input type="checkbox" value="remember-me" /> Se souvenir de moi
       </label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary active" type="submit">
+    <button class="w-100 btn btn-lg text-light active" type="submit">
       Se connecter
     </button>
   </form>
   <div class="error" v-if="error">
     {{ error.error }}
   </div>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -86,11 +93,17 @@ export default {
 </script>
 
 <style scoped>
-.hlink {
-  margin-top: 0px;
-  margin-bottom: 20px;
-  font-size: 20px;
+
+button {
+  border-radius: 0.3rem;
+  background-color: #132542;
+
 }
+.navbar-expand-lg{
+  background-color: #132542;
+  color: white;
+}
+
 .form-signin {
   width: 100%;
   max-width: 330px;

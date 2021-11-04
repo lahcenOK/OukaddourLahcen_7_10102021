@@ -1,14 +1,24 @@
 <template>
   <div>
-    <nav id="nav">
-      <ul class="links">
-        <li>
-          <router-link to="/navigate">Retour</router-link>
+    <nav id="nav" class="navbar navbar-expand-lg"> 
+      <img
+        class="ms-3"
+        src="../assets/icon-white.png"
+        alt="logo-groupomania"
+        width="175"
+        height="30"
+      />
+      <div class="container-fluid">
+        <ul class="navbar-nav  ms-5 text-light">
+          <li>
+          <router-link class="nav-link text-light active" to="/">Home</router-link>
         </li>
-      </ul>
+        </ul>
+      </div>
     </nav>
+
     <div>
-      <h2>Profile</h2>
+      <h4 class="fw-bolder mt-4">Profil :</h4>
       <p>
         <u>E-mail</u>:
         {{ dataProfile.email }}
@@ -32,25 +42,24 @@
         />
       </div>
       <button
-        class="btn btn-primary btn-lg"
+        class="btn-light text-light btn-lg ps-4 pe-4"
         type="submit"
         @click.prevent="updateProfile"
       >
         Modifier
       </button>
-
       <div class="error" v-if="error">
         {{ error.error }}
       </div>
       <button
-        class="deletebtn btn-danger"
+        class=" btn-danger btn-lg text-light"
         type="submit"
         @click.prevent="deleteProfile"
-      >
-        Supprimer mon compte
+      > 
+        Supprimer
       </button>
     </form>
-    <h4>Tout mes Postes</h4>
+    <h5 class="fw-bolder mt-3">Tout mes Postes</h5>
     <div class="mes-posts">
       <div class="m-post" v-for="mPost in postsProfile" :key="mPost.id">
         <h3>{{ mPost.title }}</h3>
@@ -90,6 +99,10 @@ export default {
     };
   },
   methods: {
+    Logout() {
+      localStorage.clear();
+      this.$router.push("/login");
+    },
     loadProfile() {
       let token = localStorage.getItem("token");
       let userId = localStorage.getItem("id");
@@ -146,7 +159,7 @@ export default {
         })
         .then(() => {
           alert("Votre compte est supprimé !");
-          this.$router.push("/"); 
+          this.Logout() 
         })
         .catch((error) => {
           console.log({ error });
@@ -161,28 +174,34 @@ export default {
 </script>
 
 <style scoped>
+.navbar-expand-lg{
+  background-color: #132542;
+  color: white;
+}
+
 form {
   margin-top: 10px;
 }
 input {
   margin-bottom: 10px;
 }
-.deletebtn {
-  background-color: rgb(255, 110, 110);
-  margin-top: 10px;
-  margin-bottom: 40px;
-  height: 45px;
+.btn-light {
+  border: none; 
+  background-color: #132542;
+  cursor: pointer;
 }
+.btn-danger{
+ border: none; 
+  cursor: pointer;
+  display: inline;
+}
+
 .error {
   font-size: 17px;
   background-color: rgb(255, 110, 110, 1);
   color: white solid;
   margin: 20px 280px 20px 280px;
   padding: 10px;
-}
-img {
-  width: 70px;
-  height: 70px;
 }
 .m-Post {
   width: 20%;

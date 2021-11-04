@@ -1,9 +1,8 @@
 <template>
   <div>
-    <button type="submit" @click.prevent="deletePost"><i class="fas fa-trash-alt"></i></button>
+    <button type="submit" @click.prevent="deletePost" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
   </div>
 </template>
-
 
 <script>
 import axios from "axios";
@@ -38,8 +37,5 @@ export default {
 </script>
 
 <style scoped>
-button {
-  background-color: rgb(255,110,110);
-  color: white;
-}
+
 </style>

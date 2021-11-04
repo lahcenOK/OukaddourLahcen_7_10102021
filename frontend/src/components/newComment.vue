@@ -10,7 +10,7 @@
           v-model="comment"
         />
       
-      <button class=" btn-sm btn btn-primary active" type="submit" @click.prevent="buttonNewComment">
+      <button class=" btn-sm btn text-light active" type="submit" @click.prevent="buttonNewComment">
         Envoyer 
       </button>
       </div>
@@ -63,6 +63,12 @@ export default {
 </script>
 
 <style scoped>
+
+.navbar-expand-lg{
+  background-color: #132542;
+  color: white;
+}
+
 input {
   border: solid rgb(206, 206, 206) 1px;
   text-decoration: none;
@@ -71,9 +77,10 @@ input {
   width: 50%;
 }
 button {
-  color: white;
   margin-top:1px;
-  border: none;
+  border: none; 
+  background-color: #132542;
+  cursor: pointer;
   
 }
 

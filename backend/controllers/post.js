@@ -22,7 +22,7 @@ exports.createPost = (req, res, next) => {
         : null,
   })
     .then(() => res.status(201).json({ message: "Post enregistré !" }))
-    .catch((error) => res.status(400).json({ error }));
+    .catch((error) => res.status(400).json({ error : "Merci de remplir les champs."}));
 };
 
 // Afficher tous les posts
@@ -124,5 +124,49 @@ exports.deletePost = (req, res, next) => {
       });
     });
 };
+// Modofier un post
+exports.updatePost = (req, res, next) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const userId = decodedToken.userId;
+  const isAdmin = decodedToken.isAdmin;
 
+  models.Post.findOne({
+    where: { id: req.params.id },
+  })
+    .then((post) => {
+      if (post.idUsers === userId || isAdmin === true) {
+        if (post.image !== null) {
+          const filename = post.image.split("/images/")[1];
+          fs.unlink(`images/${filename}`, () => {
+            post
+              .update()
+              .then(() =>
+                res.status(200).json({ message: "Post modifié !" })
+              )
+              .catch((error) => res.status(400).json({ error }));
+          });
+        } else {
+          post
+            .update()
+            .then(() => {
+              res.status(200).json({
+                message: "Post supprimé !",
+              });
+            })
+            .catch((error) => {
+              res.status(400).json({
+                error: error,
+                message: "Le post n'a pas pu être modifié",
+              });
+            });
+        }
+      }
+    })
+    .catch((error) => {
+      res.status(400).json({
+        error: error,
+      });
+    });
+};
 

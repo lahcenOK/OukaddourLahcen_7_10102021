@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button type="submit" @click.prevent="deleteComment"><i class="fas fa-trash-alt"></i></button>
+    <button class="btn btn-danger" type="submit" @click.prevent="deleteComment"><i class="fas fa-trash-alt"></i></button>
   </div>
 </template>
 

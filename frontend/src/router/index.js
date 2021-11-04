@@ -11,7 +11,7 @@ const routes = [
     path: "/navigate",
     name: "navigate",
     component: () =>
-      import("../components/navigate.vue"),
+      import("../views/navigate.vue"),
     beforeEnter: (to, from, next) => {
       let token = localStorage.getItem("token");
       if (token) {

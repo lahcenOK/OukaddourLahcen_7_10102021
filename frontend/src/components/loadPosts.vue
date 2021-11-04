@@ -15,13 +15,16 @@
         <i>{{ post.User.name }} {{ post.User.firstname }}</i>
       </div>
       <div>
-        <router-link class="one-post" :to="'/onePost/' + post.id"
+        <router-link class="btn text-light" :to="'/onePost/' + post.id"
           >Voir les commentaires</router-link
         >
-      </div>
+        </div>
       <div class="adminDelete" v-if="isAdmin == true">
         <deletePost :id="post.id" />
       </div>
+      <div v-else-if="post.idUsers == userId">
+          <deletePost :idpost="post.id" />
+        </div>
     </div>
   </div>
 </template>
@@ -87,10 +90,11 @@ export default {
   margin: 10px;
 }
 
-a {
-  text-decoration: none;
-  color: rgb(19, 3, 49);
-}
+.btn {
+  background-color: #132542;
+  cursor: pointer;
+  }
+
 .content {
   font-size: 18px;
   padding-bottom: 5px;

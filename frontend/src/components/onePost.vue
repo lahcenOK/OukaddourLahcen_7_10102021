@@ -1,12 +1,22 @@
 <template>
   <div>
-    <nav id="nav">
-      <ul class="links">
-        <li>
-          <router-link to="/navigate">Retour</router-link>
+    <nav id="nav" class="navbar navbar-expand-lg"> 
+      <img
+        class="ms-3"
+        src="../assets/icon-white.png"
+        alt="logo-groupomania"
+        width="175"
+        height="30"
+      />
+      <div class="container-fluid">
+        <ul class="navbar-nav  ms-5 text-light">
+          <li>
+          <router-link class="nav-link text-light" to="/navigate">Retour</router-link>
         </li>
-      </ul>
+        </ul>
+      </div>
     </nav>
+      
     <div id="onePost">
       <div id="comment-card" v-for="comment in allComments" :key="comment.id">
         <div class="content">
@@ -19,7 +29,7 @@
         <div v-if="comment.idUsers == userId">
           <deleteComment :idComm="comment.id" />
         </div>
-        <div v-if="isAdmin == true">
+        <div v-else-if="isAdmin == true">
           <deleteComment :idComm="comment.id" />
         </div>
       </div>
@@ -79,6 +89,11 @@ export default {
 };
 </script>
 <style scoped>
+.navbar-expand-lg{
+  background-color: #132542;
+  color: white;
+}
+
 #onePost {
   display: flex;
   flex-direction: column;

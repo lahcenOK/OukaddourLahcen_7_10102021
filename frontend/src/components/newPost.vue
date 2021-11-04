@@ -1,17 +1,11 @@
 <template>
 <div class="container justify-content-center">
-    <img
-      class="mb-4"
-      src="../assets/icon-logo.png"
-      alt=""
-      width=""
-      height="60"
-    />
-    <form method="post" @submit.prevent="buttonNewPost">
-      <h2>Poster votre message : </h2>
+      <form method="post" @submit.prevent="buttonNewPost">
+        
+      <h4 class="fw-bolder mt-5" >Poster votre message : </h4>
       <div>
         <label for="title"></label>
-        <input type="title" id="title" placeholder="Titre" v-model="title" />
+        <input class="form-control" type="title" id="title" placeholder="Titre" v-model="title" />
       </div>
       <div>
         <label for="content"></label>
@@ -19,15 +13,15 @@
           type="text"
           id="content"
           placeholder="Votre message !"
-          rows="3" class="form-group form-group col-sm-6"
+          rows="3" class="form-control col-sm-6"
           v-model="content"
         />
       </div>
       <div>
         <label for="File">(Optionnel)</label><br />
-        <input type="file" ref="file" @change="selectFile()" />
+        <input class="form-control" type="file" ref="file" @change="selectFile()" />
       </div>
-      <button class="btn btn-primary active" type="submit" @click.prevent="buttonNewPost">Publier</button>
+      <button class="btn active ms-2 text-light" type="submit" @click.prevent="buttonNewPost">Publier</button>
       <div class="error" v-if="error">
         {{ error.error }}
       </div>
@@ -86,16 +80,15 @@ export default {
 <style scoped>
 
 textarea {
+  margin:auto;
   width: 70%;
-  margin-bottom: 1px;
 }
 label {
   font-size: 12px;
 }
 input {
-  border: solid rgb(172, 164, 164) 1px;
-  text-decoration: none;
-  margin-bottom: 5px;
+ margin:auto;
+  margin-bottom: 4px;
   width: 70%;
 }
 button {
@@ -103,7 +96,7 @@ button {
   width: 70%;
   height: 30%;
   font-weight: 600;
-  margin-top: 1px;
+  background-color: #132542;
   cursor: pointer;
 }
 

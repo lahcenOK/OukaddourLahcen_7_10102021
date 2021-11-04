@@ -1,16 +1,23 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
+      <img
+        class="ms-3"
+        src="../assets/icon-white.png"
+        alt="logo-groupomania"
+        width="175"
+        height="30"
+      />
       <div class="container-fluid">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link active" to="/">Home</router-link>
+            <router-link class="nav-link active ms-3  text-light" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link active" to="/profile"> Profile</router-link>
+            <router-link class="nav-link active ms-3  text-light" to="/profile"> Profile</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link active" to="/login" v-on:click="Logout()">
+            <router-link class="nav-link active ms-3 text-light" to="/login" v-on:click="Logout()">
             Déconnexion</router-link
           >
           </li>
@@ -30,8 +37,8 @@
 
 
 <script>
-import loadPosts from "./loadPosts";
-import newPost from "./newPost";
+import loadPosts from "../components/loadPosts";
+import newPost from "../components/newPost";
 
 export default {
   name: "navigate",
@@ -55,7 +62,8 @@ export default {
 </script>
 
 <style scoped>
-.navbar {
-  color: black;
+.navbar-expand-lg{
+  background-color: #132542;
+  color: white;
 }
 </style>

@@ -1,16 +1,24 @@
 <template>
-  <div class="container">
-    <img
-      class="mb-4"
-      src="../assets/icon-logo.png"
-      alt=""
-      width=""
-      height="60"
-    />
+  <div>
+    <nav id="nav" class="navbar navbar-expand-lg"> 
+      <img
+        class="ms-3"
+        src="../assets/icon-white.png"
+        alt="logo-groupomania"
+        width="175"
+        height="30"
+      />
+      <div class="container-fluid">
+        <ul class="navbar-nav  ms-5 text-light">
+          <li>
+          <router-link class="nav-link text-light" to="/">Home</router-link>
+        </li>
+        </ul>
+      </div>
+    </nav>
     <div class="hlink">
-      <router-link to="/">Home</router-link>
+      <h4 class="fw-bolder mt-5">Inscription :</h4>
     </div>
-    <h1>Inscription :</h1>
     <form method="post" @submit.prevent="buttonSignup">
       <input
         type="email"
@@ -39,7 +47,7 @@
       />
 
       <button
-        class="w-50 btn-lg btn-primary active"
+        class="w-50 btn-lg text-white active"
         type="submit"
         @click.prevent="buttonSignup"
       >
@@ -96,15 +104,18 @@ input {
   margin-bottom: 5px;
   width: 50%;
 }
-.hlink {
-  margin-top: 0px;
-  margin-bottom: 10px;
-   font-size: 20px;
+.navbar-expand-lg{
+  background-color: #132542;
+  color: white;
+}
+button {
+  border-radius: 0.3rem;
+  background-color: #132542;
+  cursor: pointer;
 }
 .error {
   font-size: 17px;
   background-color: rgb(255, 110, 110, 1);
-
   margin: 20px 280px 20px 280px;
   padding: 10px;
 }
