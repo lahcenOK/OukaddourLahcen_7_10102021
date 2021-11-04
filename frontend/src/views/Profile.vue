@@ -1,13 +1,15 @@
 <template>
   <div>
     <nav id="nav" class="navbar navbar-expand-lg"> 
-      <img
-        class="ms-3"
+      <div class="img_nav">
+        <img
+        class=" ms-3"
         src="../assets/icon-white.png"
         alt="logo-groupomania"
         width="175"
         height="30"
       />
+      </div>
       <div class="container-fluid">
         <ul class="navbar-nav  ms-5 text-light">
           <li>
@@ -67,9 +69,12 @@
           :src="mPost.image"
           :alt="mPost.image"
           v-if="mPost.image != null"
+           width="295"
+           height="350"
         /><br />
         <p>{{ mPost.content }}</p>
         <deletePost :id="mPost.id" />
+       <updatePost :id="mPost.id" />
       </div>
     </div>
   </div>
@@ -78,10 +83,12 @@
 <script>
 import axios from "axios";
 import deletePost from "../components/deletePost";
+import updatePost from "../components/updatePost";
 export default {
   name: "profile",
   components: {
     deletePost,
+    updatePost
   },
   props: {
     id: Number,
@@ -203,10 +210,18 @@ input {
   margin: 20px 280px 20px 280px;
   padding: 10px;
 }
-.m-Post {
-  width: 20%;
+.m-post {
+  width: 30%;
+  max-width: 500px;
   font-size: 12px;
   margin: 15px;
   padding: 10px;
+   border: solid 1px;
+}
+.mes-posts{  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 70px;
 }
 </style>

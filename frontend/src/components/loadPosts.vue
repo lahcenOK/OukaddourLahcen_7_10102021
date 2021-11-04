@@ -103,7 +103,7 @@ export default {
 img {
   max-width: 500px;
   width: 80%;
-  height: 70%;
+  height: 60%;
 }
 .createdAt {
   font-size: 12px;
