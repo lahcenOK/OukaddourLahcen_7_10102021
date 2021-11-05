@@ -9,68 +9,48 @@
         height="30"
       />
       <div class="container-fluid">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <router-link class="nav-link active text-light" to="/"
-                >Home</router-link
-              >
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle text-light"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Compte
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <router-link class="nav-link" to="/profile"
-                    ><i class="fas fa-user-edit"></i> Profile</router-link
-                  >
-                </li>
-                <li>
-                  <router-link class="nav-link" to="/login"
-                    ><i class="fas fa-sign-in-alt"></i> Se
-                    Connecter</router-link
-                  >
-                </li>
-
-                <li>
-                  <router-link
-                    class="nav-link"
-                    to="/login"
-                    v-on:click="Logout()"
-                    ><i class="fas fa-sign-out-alt"></i>
-                    Déconnexion</router-link
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <router-link class="btn btn-outline-light" to="/inscription">
-            <i class="fas fa-edit"></i> Inscription
-          </router-link>
-
-          <router-link class="btn btn-outline-info" to="/about">
-            <i class="fas fa-info"></i>
-          </router-link>
-        </div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <router-link class="nav-link active text-light" to="/"
+              >Home</router-link
+            >
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle text-light"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Compte
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <router-link class="nav-link" to="/profile"
+                  ><i class="fas fa-user-edit"></i> Profile</router-link
+                >
+              </li>
+              <li>
+                <router-link class="nav-link" to="/login"
+                  ><i class="fas fa-sign-in-alt"></i> Se Connecter</router-link
+                >
+              </li>
+              <li>
+                <router-link class="nav-link" to="/login" v-on:click="Logout()"
+                  ><i class="fas fa-sign-out-alt"></i> Déconnexion</router-link
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <router-link class="btn btn-outline-light" to="/inscription">
+          <i class="fas fa-edit"></i> Inscription
+        </router-link>
+        <router-link class="btn btn-outline-info" to="/about">
+          <i class="fas fa-info"></i>
+        </router-link>
       </div>
     </nav>
     <div class="container">
@@ -112,9 +92,13 @@
                 </span></router-link
               >
               <div class="d-flex" v-if="is_loged">
-                <router-link class="nav-link btn-light btn-lg text-white ps-5 pe-5" to="/navigate">Forum</router-link>
                 <router-link
-                  class="nav-link btn btn-danger btn-lg text-white "
+                  class="nav-link btn-light btn-lg text-white ps-5 pe-5"
+                  to="/navigate"
+                  >Forum</router-link
+                >
+                <router-link
+                  class="nav-link btn btn-danger btn-lg text-white"
                   to="/login"
                   v-on:click="Logout()"
                 >
@@ -159,7 +143,7 @@ export default {
   color: white;
 }
 .btn-light {
-  border: none; 
+  border: none;
   background-color: #132542;
   cursor: pointer;
 }

@@ -68,7 +68,7 @@ export default {
   methods: {
     loadComments() {
       let token = localStorage.getItem("token");
-      let decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+      let decodedToken = jwt.verify(token, process.env.TOKEN);
       axios
         .get("http://localhost:3000/api/posts/" + this.id + "/comments/", {
           headers: { Authorization: "Bearer " + token },

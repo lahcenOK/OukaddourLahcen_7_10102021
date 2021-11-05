@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 exports.createComment = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, process.env.TOKEN);
   const userId = decodedToken.userId;
 
   if (req.body.comment === "") {
@@ -54,7 +54,7 @@ exports.getAllComments = (req, res, next) => {
 
 exports.deleteComment = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, process.env.TOKEN);
   const userId = decodedToken.userId;
   const isAdmin = decodedToken.isAdmin;
 

@@ -5,7 +5,7 @@ const fs = require("fs");
 //Création d'un post
 exports.createPost = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, process.env.TOKEN);
   const userId = decodedToken.userId;
 
   if (req.body.title === "" || req.body.content === "") {
@@ -82,7 +82,7 @@ exports.getOnePost = (req, res, next) => {
 // Supprimer un post
 exports.deletePost = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, process.env.TOKEN);
   const userId = decodedToken.userId;
   const isAdmin = decodedToken.isAdmin;
 
@@ -127,7 +127,7 @@ exports.deletePost = (req, res, next) => {
 // Modofier un post
 exports.updatePost = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, process.env.TOKEN);
   const userId = decodedToken.userId;
   const isAdmin = decodedToken.isAdmin;
 

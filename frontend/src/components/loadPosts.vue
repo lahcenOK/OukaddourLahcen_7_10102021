@@ -22,8 +22,8 @@
       <div class="adminDelete" v-if="isAdmin == true">
         <deletePost :id="post.id" />
       </div>
-      <div v-else-if="post.idUsers == userId">
-          <deletePost :idpost="post.id" />
+      <div class="adminDelete" v-else-if="post.idUsers == userId">
+          <deletePost :id="post.id" />
         </div>
     </div>
   </div>

@@ -69,8 +69,8 @@
           :src="mPost.image"
           :alt="mPost.image"
           v-if="mPost.image != null"
-           width="295"
-           height="350"
+           width="300"
+           height="350" class="img-fluid"
         /><br />
         <p>{{ mPost.content }}</p>
         <deletePost :id="mPost.id" />

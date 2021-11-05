@@ -1,5 +1,8 @@
 const express = require("express");
 const app = express();
+const helmet = require('helmet');
+const dotenv = require("dotenv");
+dotenv.config();
 
 const userRoutes = require("./routes/user");
 const profileRoutes = require("./routes/profile");
@@ -20,6 +23,8 @@ app.use((req, res, next) => {
   next();
 });
 
+
+app.use(helmet());
 app.use(express.json());
 
 app.use("/images", express.static(path.join(__dirname, "images")));
