@@ -78,6 +78,51 @@ exports.getOnePost = (req, res, next) => {
       });
     });
 };
+// Modifier un post
+exports.modifyPost = (req, res, next) => {
+  console.log(req.body.title);
+  const token = req.headers.authorization.split(" ")[1]; 
+
+  if (req.body.title == "" || req.body.content == "") {
+    return res
+      .status(400)
+      .json({ error: "Merci de remplir tous les champs !" });
+  }
+  models.Post.findOne({
+    where: { id: req.body.id },
+  }).then((post) => {
+    if (req.file) {
+      post
+        .update({
+          title: req.body.title,
+          content: req.body.content,
+          image:
+            req.body.content && req.file
+              ? `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
+              : null,
+        })
+        .then(() => res.status(200).json({ message: "Post modifié !" }))
+        .catch((error) =>
+          res
+            .status(400)
+            .json({ error: "Impossible de mettre à jour votre profile !" })
+        );
+    }
+    else {
+      post
+        .update({
+          title: req.body.title,
+          content: req.body.content          
+        })
+        .then(() => res.status(200).json({ message: "Post modifié !" }))
+        .catch((error) =>
+          res
+            .status(400)
+            .json({ error: "Impossible de mettre à jour votre profile !" })
+        );
+    }
+  });
+};
 
 // Supprimer un post
 exports.deletePost = (req, res, next) => {
@@ -124,49 +169,3 @@ exports.deletePost = (req, res, next) => {
       });
     });
 };
-// Modofier un post
-exports.updatePost = (req, res, next) => {
-  const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, process.env.TOKEN);
-  const userId = decodedToken.userId;
-  const isAdmin = decodedToken.isAdmin;
-
-  models.Post.findOne({
-    where: { id: req.params.id },
-  })
-    .then((post) => {
-      if (post.idUsers === userId || isAdmin === true) {
-        if (post.image !== null) {
-          const filename = post.image.split("/images/")[1];
-          fs.unlink(`images/${filename}`, () => {
-            post
-              .update()
-              .then(() =>
-                res.status(200).json({ message: "Post modifié !" })
-              )
-              .catch((error) => res.status(400).json({ error }));
-          });
-        } else {
-          post
-            .update()
-            .then(() => {
-              res.status(200).json({
-                message: "Post supprimé !",
-              });
-            })
-            .catch((error) => {
-              res.status(400).json({
-                error: error,
-                message: "Le post n'a pas pu être modifié",
-              });
-            });
-        }
-      }
-    })
-    .catch((error) => {
-      res.status(400).json({
-        error: error,
-      });
-    });
-};
-
