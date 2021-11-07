@@ -63,8 +63,9 @@
     </form>
     <h5 class="fw-bolder mt-3">Tout mes Postes</h5>
     <div class="mes-posts">
-      <div class="m-post" v-for="mPost in postsProfile" :key="mPost.id">
+      <div class="m-post" v-for="mPost in postsProfile" :key="mPost.id">        
         <h3>{{ mPost.title }}</h3>
+        <router-link class="btn btn-primary" :to="'/UpdatePost/' +  mPost.id">Modifier</router-link>        
         <img
           :src="mPost.image"
           :alt="mPost.image"
@@ -74,7 +75,7 @@
         /><br />
         <p>{{ mPost.content }}</p>
         <deletePost :id="mPost.id" />
-       <updatePost :id="mPost.id" />
+        
       </div>
     </div>
   </div>
@@ -83,12 +84,11 @@
 <script>
 import axios from "axios";
 import deletePost from "../components/deletePost";
-import updatePost from "../components/updatePost";
+
 export default {
   name: "profile",
   components: {
-    deletePost,
-    updatePost
+    deletePost
   },
   props: {
     id: Number,

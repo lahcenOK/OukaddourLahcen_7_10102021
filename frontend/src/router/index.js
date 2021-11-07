@@ -64,6 +64,20 @@ const routes = [
       }
     },
   },
+  {
+    path: "/UpdatePost/:id",
+    name: "UpdatePost",
+    component: () =>
+      import( "../components/updatePost.vue"),
+    beforeEnter: (to, from, next) => {
+      let token = localStorage.getItem("token");
+      if (token) {
+        next();
+      } else {
+        next({ name: "login" });
+      }
+    },
+  },
   
 
 ]
