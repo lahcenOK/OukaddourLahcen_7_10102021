@@ -1,10 +1,14 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": " Crée un réseau social d'entreprise.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lahcenOK/OukaddourLahcen_7_10102021.git"
   },
   "author": "",
   "license": "ISC",
