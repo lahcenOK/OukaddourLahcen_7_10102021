@@ -50,7 +50,6 @@
 
 <script>
 import axios from "axios";
-let jwt = require("jsonwebtoken");
 
 export default {
   name: "updatePost",
@@ -69,18 +68,18 @@ export default {
   },
   methods: {
     getPost() {
-      let token = localStorage.getItem("token");
-      let decodedToken = jwt.verify(token, process.env.VUE_APP_TOKEN);
+     let token = localStorage.getItem("token");
+
       axios
         .get("http://localhost:3000/api/posts/" + this.id, {
           headers: { Authorization: "Bearer " + token },
         })
         .then((res) => {
-          this.isAdmin = decodedToken.isAdmin;
+          this.isAdmin = this.$store.getters.isAdmin;
           this.title = res.data.title;
           this.content = res.data.content;
           this.image = res.data.image;
-          //this.id = res.data.id;
+      
           console.log(res.data);
         })
         .catch((error) => {
@@ -88,7 +87,6 @@ export default {
         });
     },
     buttonUpdatePost() {
-      //console.log("upload " + this.file.name);
       let token = localStorage.getItem("token");
       const data = new FormData();
       if (
@@ -114,7 +112,6 @@ export default {
 
           document.getElementById("fileInput").value = "";
 
-          //this.getPost();
           this.$router.push("/navigate");
         })
         .catch((error) => {

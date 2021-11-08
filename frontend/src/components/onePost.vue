@@ -45,7 +45,6 @@
 let moment = require("moment");
 import newComment from "./newComment";
 import deleteComment from "./deleteComment";
-let jwt = require("jsonwebtoken");
 
 import axios from "axios";
 
@@ -68,13 +67,13 @@ export default {
   methods: {
     loadComments() {
       let token = localStorage.getItem("token");
-      let decodedToken = jwt.verify(token, process.env.VUE_APP_TOKEN);
+    
       axios
         .get("http://localhost:3000/api/posts/" + this.id + "/comments/", {
           headers: { Authorization: "Bearer " + token },
         })
         .then((res) => {
-          this.isAdmin = decodedToken.isAdmin;
+          this.isAdmin = this.$store.getters.isAdmin;
           this.allComments = res.data;
           console.log(this.allComments)
         })

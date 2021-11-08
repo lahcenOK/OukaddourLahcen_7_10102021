@@ -32,7 +32,6 @@
 <script>
 import deletePost from "./deletePost";
 let moment = require("moment");
-let jwt = require("jsonwebtoken");
 
 import axios from "axios";
 
@@ -57,14 +56,14 @@ export default {
   methods: {
     loadNavigate() {
       let token = localStorage.getItem("token");
-      let decodedToken = jwt.verify(token, process.env.VUE_APP_TOKEN);
+
       axios
         .get("http://localhost:3000/api/posts/", {
           headers: { Authorization: "Bearer " + token },
         })
         .then((res) => {
           this.allPosts = res.data;
-          this.isAdmin = decodedToken.isAdmin;
+          this.isAdmin = this.$store.getters.isAdmin;
         })
         .catch((error) => {
           console.log({ error });
