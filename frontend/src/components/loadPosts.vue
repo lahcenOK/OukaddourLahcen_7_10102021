@@ -57,7 +57,7 @@ export default {
   methods: {
     loadNavigate() {
       let token = localStorage.getItem("token");
-      let decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+      let decodedToken = jwt.verify(token, process.env.VUE_APP_TOKEN);
       axios
         .get("http://localhost:3000/api/posts/", {
           headers: { Authorization: "Bearer " + token },

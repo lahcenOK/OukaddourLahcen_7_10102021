@@ -70,7 +70,7 @@ export default {
   methods: {
     getPost() {
       let token = localStorage.getItem("token");
-      let decodedToken = jwt.verify(token, process.env.TOKEN);
+      let decodedToken = jwt.verify(token, process.env.VUE_APP_TOKEN);
       axios
         .get("http://localhost:3000/api/posts/" + this.id, {
           headers: { Authorization: "Bearer " + token },
